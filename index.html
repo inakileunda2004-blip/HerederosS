@@ -1,1 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herederos del Beto · Fútbol 8</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primario: #0a0a0a;
+      --acento: #e10600;
+      --rojo: #b00000;
+      --claro: #f5f5f5;
+      --oscuro: #000;
+      --gris: #121212;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--oscuro);
+      color: var(--claro);
+      line-height: 1.6;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 90vh;
+      background:
+        linear-gradient(135deg, rgba(10,37,64,0.92), rgba(0,0,0,0.85)),
+        repeating-linear-gradient(45deg, #0a2540 0 20px, #071a2e 20px 40px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      border-bottom: 6px solid var(--acento);
+    }
+
+    .hero img.logo {
+      max-width: 260px;
+      width: 60%;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 8px 25px rgba(255,215,0,0.3));
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      letter-spacing: 0.3rem;
+      color: var(--acento);
+      line-height: 1;
+      text-shadow: 4px 4px 0 var(--rojo);
+    }
+
+    .hero .lema {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      letter-spacing: 0.5rem;
+      text-transform: uppercase;
+      margin-top: 18px;
+      color: var(--claro);
+      opacity: 0.85;
+    }
+
+    .hero .fundacion {
+      margin-top: 30px;
+      padding: 10px 30px;
+      background: var(--rojo);
+      border: 2px solid var(--acento);
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.3rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--primario);
+      border-bottom: 3px solid var(--acento);
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 16px 28px;
+      color: var(--claro);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav ul li a:hover { background: var(--acento); color: var(--primario); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 80px 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      text-align: center;
+      letter-spacing: 0.2rem;
+      color: var(--acento);
+      margin-bottom: 10px;
+    }
+
+    .section-divider {
+      width: 80px;
+      height: 4px;
+      background: var(--rojo);
+      margin: 0 auto 50px;
+    }
+
+    /* ─── INTRODUCCIÓN ─── */
+    #intro {
+      background: linear-gradient(180deg, var(--oscuro), var(--gris));
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .intro-texto p {
+      font-size: 1.1rem;
+      color: #d5d5d5;
+      margin-bottom: 18px;
+    }
+
+    .intro-texto .firma {
+      font-family: 'Oswald', sans-serif;
+      color: var(--acento);
+      letter-spacing: 0.2rem;
+      margin-top: 25px;
+      font-style: italic;
+    }
+
+    .intro-img {
+      position: relative;
+      overflow: hidden;
+      border: 4px solid var(--acento);
+      box-shadow: 10px 10px 0 var(--rojo);
+    }
+
+    .intro-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .intro-img:hover img { transform: scale(1.05); }
+
+    @media (max-width: 768px) {
+      .intro-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── HISTORIA ─── */
+    #historia { background: var(--oscuro); }
+
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 50px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--acento);
+    }
+
+    .hito {
+      position: relative;
+      margin-bottom: 45px;
+      padding: 20px 25px;
+      background: var(--gris);
+      border-left: 4px solid var(--rojo);
+    }
+
+    .hito::before {
+      content: '';
+      position: absolute;
+      left: -42px;
+      top: 25px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--acento);
+      border: 3px solid var(--oscuro);
+    }
+
+    .hito .año {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--acento);
+      letter-spacing: 0.1rem;
+    }
+
+    .hito h3 {
+      font-family: 'Oswald', sans-serif;
+      color: var(--claro);
+      margin: 5px 0 10px;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+
+    .hito p { color: #c0c0c0; font-size: 1rem; }
+
+    /* ─── PLANTEL ─── */
+    #plantel {
+      background: linear-gradient(180deg, var(--gris), var(--oscuro));
+    }
+
+    .plantel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .jugador {
+      background: var(--gris);
+      border: 2px solid transparent;
+      border-top: 4px solid var(--acento);
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .jugador:hover {
+      transform: translateY(-8px);
+      border-color: var(--acento);
+      box-shadow: 0 15px 40px rgba(255,215,0,0.2);
+    }
+
+    .jugador-foto {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .jugador-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s, filter 0.4s;
+      filter: grayscale(20%) contrast(1.05);
+    }
+
+    .jugador:hover .jugador-foto img {
+      transform: scale(1.08);
+      filter: grayscale(0%) contrast(1.1);
+    }
+
+    .jugador-info {
+      padding: 20px;
+      text-align: center;
+      border-top: 2px solid var(--primario);
+    }
+
+    .jugador-numero {
+      display: inline-block;
+      background: #000;
+      color: var(--acento);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 2px solid var(--acento);
+    }
+
+    .jugador-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--acento);
+      letter-spacing: 0.15rem;
+      margin-bottom: 5px;
+    }
+
+    .jugador-posicion {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.25rem;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    /* ─── REPRODUCTOR MÚSICA ─── */
+    .player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 200;
+      background: #000;
+      border: 2px solid var(--acento);
+      border-radius: 50px;
+      padding: 8px 18px 8px 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 30px rgba(225,6,0,0.45);
+      transition: transform 0.25s;
+      user-select: none;
+    }
+    .player:hover { transform: translateY(-3px); }
+
+    .player-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--acento);
+      border: none;
+      color: #000;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .player-btn:hover { background: #ff2a1f; }
+
+    .player-info {
+      color: var(--claro);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15rem;
+    }
+    .player-info .titulo { color: var(--acento); font-weight: 600; display: block; }
+    .player-info .artista { opacity: 0.7; font-size: 0.72rem; }
+
+    .player-equalizer {
+      display: inline-flex;
+      gap: 2px;
+      height: 16px;
+      align-items: flex-end;
+      margin-left: 4px;
+    }
+    .player-equalizer span {
+      width: 3px;
+      background: var(--acento);
+      animation: eq 1s ease-in-out infinite;
+      animation-play-state: paused;
+    }
+    .player-equalizer span:nth-child(1) { height: 40%; animation-delay: -0.2s; }
+    .player-equalizer span:nth-child(2) { height: 80%; animation-delay: -0.5s; }
+    .player-equalizer span:nth-child(3) { height: 60%; animation-delay: -0.8s; }
+    .player.sonando .player-equalizer span { animation-play-state: running; }
+
+    @keyframes eq {
+      0%,100% { height: 20%; }
+      50% { height: 100%; }
+    }
+
+    @media (max-width: 500px) {
+      .player-info { display: none; }
+    }
+
+    .spotify-panel {
+      position: absolute;
+      bottom: 72px;
+      right: 0;
+      width: 340px;
+      max-width: 90vw;
+      background: #000;
+      border: 2px solid var(--acento);
+      border-radius: 12px;
+      padding: 12px;
+      display: none;
+      box-shadow: 0 12px 40px rgba(225,6,0,0.5);
+    }
+    .spotify-panel.abierto { display: block; }
+
+    .spotify-cerrar {
+      position: absolute;
+      top: -12px; right: -12px;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--acento);
+      color: #000;
+      border: 2px solid #000;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ─── MODAL ─── */
+    .jugador { cursor: pointer; }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 30px 15px;
+      backdrop-filter: blur(6px);
+    }
+    .modal.activo { display: block; }
+
+    .modal-contenido {
+      max-width: 780px;
+      margin: 20px auto;
+      background: linear-gradient(180deg, var(--gris), #0a1628);
+      border: 3px solid var(--acento);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      animation: aparecer 0.35s ease;
+    }
+
+    @keyframes aparecer {
+      from { opacity:0; transform: translateY(30px) scale(0.95); }
+      to { opacity:1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-cerrar {
+      position: absolute;
+      top: 15px; right: 15px;
+      width: 40px; height: 40px;
+      background: var(--rojo);
+      color: var(--claro);
+      border: 2px solid var(--acento);
+      font-size: 1.6rem;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+    .modal-cerrar:hover { transform: rotate(90deg); }
+
+    .modal-header {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 25px;
+      padding: 30px;
+      background: linear-gradient(135deg, var(--primario), #000);
+      border-bottom: 3px solid var(--acento);
+      align-items: center;
+    }
+
+    .modal-foto {
+      width: 220px; height: 220px;
+      border: 4px solid var(--acento);
+      overflow: hidden;
+      background: #000;
+    }
+    .modal-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+    .modal-numero {
+      display: inline-block;
+      background: #000;
+      color: var(--acento);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      padding: 4px 18px;
+      border: 2px solid var(--acento);
+      margin-bottom: 10px;
+      letter-spacing: 0.1rem;
+    }
+
+    .modal-titulo h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem;
+      color: var(--acento);
+      letter-spacing: 0.15rem;
+      line-height: 1;
+    }
+    .modal-apodo {
+      font-family: 'Oswald', sans-serif;
+      color: var(--claro);
+      font-style: italic;
+      font-size: 1.1rem;
+      margin: 8px 0;
+      opacity: 0.9;
+    }
+    .modal-posicion {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      color: var(--rojo);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .modal-body { padding: 30px; }
+
+    .modal-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .stat-item {
+      background: #000;
+      border: 1px solid var(--acento);
+      padding: 15px;
+      text-align: center;
+    }
+    .stat-label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25rem;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .stat-valor {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--acento);
+    }
+
+    .modal-desc {
+      color: #d5d5d5;
+      font-size: 1rem;
+      line-height: 1.75;
+      white-space: pre-line;
+      border-top: 1px solid rgba(255,215,0,0.2);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .modal-header { grid-template-columns: 1fr; text-align: center; padding: 20px; }
+      .modal-foto { margin: 0 auto; width: 180px; height: 180px; }
+      .modal-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--primario);
+      border-top: 4px solid var(--acento);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer .footer-logo {
+      max-width: 120px;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+
+    footer p {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.2rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    footer p.small {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      opacity: 0.6;
+      letter-spacing: 0.1rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ REPRODUCTOR SPOTIFY ══════════════ -->
+<div class="player" id="player">
+  <button class="player-btn" id="playerBtn" title="Abrir reproductor">♪</button>
+  <div class="player-info">
+    <span class="titulo">Detrás del humo no se ve</span>
+    <span class="artista">Emilia</span>
+  </div>
+  <div class="spotify-panel" id="spotifyPanel">
+    <button class="spotify-cerrar" id="spotifyCerrar">×</button>
+    <iframe
+      id="spotifyFrame"
+      style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/REEMPLAZAR_TRACK_ID?utm_source=generator&theme=0"
+      width="100%" height="152" frameborder="0" allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <img src="HDB/HEREDEROS DEL BETO.png" alt="Escudo Herederos del Beto" class="logo" />
+  <h1>Herederos del Beto</h1>
+  <p class="lema">Fuerza · Familia · Fútbol</p>
+  <div class="fundacion">Fundado en 2023</div>
+</section>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <ul>
+    <li><a href="#intro">El Club</a></li>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#plantel">Plantel</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ INTRO ══════════════ -->
+<section id="intro">
+  <div class="container">
+    <h2 class="section-title">El Nacimiento</h2>
+    <div class="section-divider"></div>
+
+    <div class="intro-grid">
+      <div class="intro-texto">
+        <p>
+          <strong style="color:var(--acento);">Herederos del Beto</strong> nació en el año 2015
+          como un proyecto de un grupo de amigos que compartían algo más grande que la pelota: una
+          historia en común y el recuerdo imborrable del Beto, la figura que unió al grupo desde los
+          primeros partidos de pibes.
+        </p>
+        <p>
+          Lo que empezó como un equipo de fin de semana se transformó en un club con identidad propia,
+          valores claros y una manera de jugar que refleja de dónde viene cada uno. Porque acá no
+          venimos a cumplir, venimos a dejarlo todo en la cancha.
+        </p>
+        <p>
+          Somos fútbol 8. Somos pasión, respeto y huevos. Somos <strong>herederos</strong> —
+          de una historia, de una amistad y de una camiseta que se defiende con todo.
+        </p>
+        <p class="firma">— Herederos del Beto · Desde 2015</p>
+      </div>
+
+      <div class="intro-img">
+        <img src="HDB/Capitanes.jpg" alt="Capitanes del equipo" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HISTORIA ══════════════ -->
+<section id="historia">
+  <div class="container">
+    <h2 class="section-title">Nuestra Historia</h2>
+    <div class="section-divider"></div>
+
+    <div class="timeline">
+
+      <div class="hito">
+        <div class="año">2023</div>
+        <h3>La fundación</h3>
+        <p>Un grupo de amigos se junta a jugar todos los fines de semana. Entre cervezas y
+        partidos le ponemos nombre a lo que ya sentíamos: nace <em>Herederos del Beto</em>.</p>
+      </div>
+
+      <div class="hito">
+        <div class="año">2024</div>
+        <h3>Primer torneo oficial</h3>
+        <p>Nos inscribimos por primera vez en una liga de fútbol 8. Debutamos con la camiseta
+        que todavía llevamos y empezamos a hacernos un nombre en la cancha.</p>
+      </div>
+
+      <div class="hito">
+        <div class="año">2025</div>
+        <h3>El primer título</h3>
+        <p>Llegó la primera copa. Fue una final a puro corazón, con gol sobre la hora. Esa tarde
+        quedó grabada en la historia del club para siempre.</p>
+      </div>
+
+      <div class="hito">
+        <div class="año">2026</div>
+        <h3>Una nueva etapa</h3>
+        <p>El club sigue creciendo. Nuevas caras, los mismos valores. La herencia se transmite:
+        no es solo fútbol, es familia.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PLANTEL ══════════════ -->
+<section id="plantel">
+  <div class="container">
+    <h2 class="section-title">El Plantel</h2>
+    <div class="section-divider"></div>
+
+    <div class="plantel-grid" id="plantelGrid"></div>
+    <p style="text-align:center; margin-top:30px; color:#888; font-size:0.9rem; font-style:italic;">Hacé click en cada jugador para ver su perfil completo</p>
+  </div>
+</section>
+
+<!-- ══════════════ MODAL PERFIL JUGADOR ══════════════ -->
+<div class="modal" id="modal">
+  <div class="modal-contenido">
+    <button class="modal-cerrar" id="modalCerrar">×</button>
+    <div class="modal-header">
+      <div class="modal-foto"><img id="modalFoto" src="" alt="" /></div>
+      <div class="modal-titulo">
+        <div class="modal-numero" id="modalNumero"></div>
+        <h2 id="modalNombre"></h2>
+        <p class="modal-apodo" id="modalApodo"></p>
+        <p class="modal-posicion" id="modalPosicion"></p>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-stats">
+        <div class="stat-item"><span class="stat-label">Altura</span><span class="stat-valor" id="modalAltura"></span></div>
+        <div class="stat-item"><span class="stat-label">Peso</span><span class="stat-valor" id="modalPeso"></span></div>
+        <div class="stat-item"><span class="stat-label">Dorsal</span><span class="stat-valor" id="modalDorsal"></span></div>
+      </div>
+      <div class="modal-desc" id="modalDesc"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <img src="HDB/HEREDEROS DEL BETO.png" alt="Logo" class="footer-logo" />
+  <p>Herederos del Beto · Fútbol 8</p>
+  <p class="small">© 2026 · Fundado en 2023 · Todos los derechos reservados</p>
+</footer>
+
+<script>
+const jugadores = [
+  {
+    numero: "00", nombre: "Agustín Doroszuck", apodo: '"DORO"',
+    posicion: "Arquero", altura: "1.84 m", peso: "78 kg",
+    foto: null,
+    desc: `El uno indiscutido del arco. Doro es de esos arqueros que transmiten tranquilidad con solo estar ahí: reflejos felinos, voz de mando y salida limpia con los pies.\n\nPARTIDOS JUGADOS: 23\nATAJADAS DECISIVAS: 41\nPENALES ATAJADOS: 4/7\nVALLA INVICTA: 6 partidos\n\nFRASES CÉLEBRES: "tranqui que la tengo" "saco yo" "ese era mío"\n\nRol del equipo: pilar desde el arco, organiza la defensa desde atrás y siempre pone la cara en las que queman.`
+  },
+  {
+    numero: "31", nombre: "José Minnucci", apodo: '"EDERSON"',
+    posicion: "Arquero", altura: "1.82 m", peso: "76 kg",
+    foto: "HDB/Jose.jpg",
+    desc: `Nuestro arquero moderno, con salida con los pies digna de los mejores del mundo 🧤. Apodado "Ederson" por su juego aéreo y su zurda precisa.\n\nPARTIDOS JUGADOS: 17\nATAJADAS DECISIVAS: 29\nASISTENCIAS DESDE EL ARCO: 3\nVALLA INVICTA: 4 partidos\n\nFRASES CÉLEBRES: "le pego largo?" "salgan jugando tranquilos" "yo me la banco"\n\nRol del equipo: arranca el juego desde el fondo, garantía cuando hay que armar desde atrás.`
+  },
+  {
+    numero: "5", nombre: "Facundo Duca", apodo: '"EL MARISCAL"',
+    posicion: "Defensa Central", altura: "1.86 m", peso: "82 kg",
+    foto: "HDB/Duca.jpg",
+    desc: `El jefe de la última línea. El Mariscal no se le escapa uno: cabecea todas, rompe el juego rival y arma desde atrás con jerarquía.\n\nPARTIDOS JUGADOS: 25\nGOLES DE CABEZA: 6\nQUITAS POR PARTIDO: 8,2\nROJAS: 2 (una injusta según él)\n\nFRASES CÉLEBRES: "marcá al 9 que yo voy al área" "líneaaa" "ey, concentración"\n\nRol del equipo: líder defensivo, referente del vestuario y voz de mando en la cancha.`
+  },
+  {
+    numero: "18", nombre: "Bautista Iriarte", apodo: '"PIPA"',
+    posicion: "Defensa", altura: "1.80 m", peso: "77 kg",
+    foto: "HDB/Pipa.jpg",
+    desc: `Defensor aguerrido y de buen pie. Pipa combina solidez en la marca con salida limpia: perro para la pelota dividida y siempre disponible para el compañero.\n\nPARTIDOS JUGADOS: 22\nGOLES: 2\nASISTENCIAS: 4\nAMARILLAS: 5 (todas por reclamar)\n\nFRASES CÉLEBRES: "dale corre que llego" "a mí me la dan" "cerramos líneas"\n\nRol del equipo: defensor todoterreno, siempre el primero en ir a cubrir al lateral que se suma.`
+  },
+  {
+    numero: "2", nombre: "Balthazar Bardisa", apodo: '"PELUSA"',
+    posicion: "Defensa", altura: "1.78 m", peso: "74 kg",
+    foto: "HDB/Baltha.jpg",
+    desc: `Con melena al viento y pierna fuerte, Pelusa es de esos jugadores que juegan al límite pero nunca te fallan. Marcador implacable y gran temperamento.\n\nPARTIDOS JUGADOS: 20\nGOLES: 1 (inolvidable)\nQUITAS POR PARTIDO: 7,5\nBARRIDAS: incontables\n\nFRASES CÉLEBRES: "yo lo sigo hasta el vestuario" "dejame marcar tranquilo" "afuera"\n\nRol del equipo: marcador por excelencia, el que va a morir por la camiseta cada pelota.`
+  },
+  {
+    numero: "3", nombre: "Mariano Botella", apodo: '"AMPOLLA"',
+    posicion: "Defensa", altura: "1.81 m", peso: "79 kg",
+    foto: null,
+    desc: `El defensor silencioso pero letal. Ampolla no grita, no protesta, solo defiende. Y cómo defiende. Cruza siempre que hace falta y aparece donde menos lo esperás.\n\nPARTIDOS JUGADOS: 19\nGOLES EN CONTRA: 1 (jura que fue el arquero)\nRECUPEROS: muchísimos\nTARJETAS: 0 (un caballero)\n\nFRASES CÉLEBRES: "tranqui" "dale" "bien ahí"\n\nRol del equipo: el defensor callado y confiable que todo equipo necesita.`
+  },
+  {
+    numero: "8", nombre: "Santiago Raimondi", apodo: '"INIESTA"',
+    posicion: "Mediocampo · Capitán", altura: "1.76 m", peso: "72 kg",
+    foto: "HDB/Inies.jpg",
+    desc: `Continuando con la presentación de jugadores, hoy viernes toca nada más y nada menos que el CAPITÁN DE LOS HEREDEROS.\n\nEl mayor heredero del Beto, que predica sus ideas y buen fútbol por las canchas de Palermo todos los domingos 🔥🔥 (menos cuando no sabe tomarse un tren 😬🆘☠️).\n\nSus asistencias y buen fútbol son dignos de obras de arte, tomando siempre un rol protagónico en el armado del juego y siendo fundamental para el equipo.\n\nDejamos algunos de sus estadísticas:\nPARTIDOS JUGADOS: Casi todos, solo faltó al más importante 😓\nGOLES: 11 👊\nALCOHOLIZAR A PERSONAS: 99,99% DE EFECTIVIDAD 🔥🔥🔥\nGAMBETAS COMPLETADAS: 13/21\nCAMPEÓN DE LA TERMA CUP\nNOCHES DE JODA: ♾️\n\nFRASES CÉLEBRES: "déjenme hablar a mí" "la pelota por abajo" "paro con zurda, juego con derecha" "soy gay" "hay qué cuidar a la caprichosa"\n\nRol del equipo: capitán ©️, encargado siempre de cuidar al equipo y hacerlo jugar.`
+  },
+  {
+    numero: "10", nombre: "Gregorio Garcia Espil", apodo: '"EL MAGO"',
+    posicion: "Mediocampo", altura: "1.77 m", peso: "73 kg",
+    foto: "HDB/Grego.jpg",
+    desc: `El dueño de la 10 y de la magia del equipo. Grego ve pases que nadie ve, tira caños que duelen y tiene una zurda educada en los parques de Palermo.\n\nPARTIDOS JUGADOS: 24\nGOLES: 14\nASISTENCIAS: 18 (líder del equipo)\nGAMBETAS: infinitas\n\nFRASES CÉLEBRES: "pedila tranquilo" "yo la engancho" "mirá esta"\n\nRol del equipo: cerebro creativo, el que desequilibra cuando el partido se pone espeso.`
+  },
+  {
+    numero: "4", nombre: "Joaquin Tagliorette", apodo: '"EL RAYO"',
+    posicion: "Carrilero Derecho", altura: "1.79 m", peso: "75 kg",
+    foto: "HDB/Taglio.jpg",
+    desc: `Velocidad pura por la banda derecha. El Rayo no se la gambetea a nadie, pero se las lleva a todas de largo y siempre termina tirando el centro.\n\nPARTIDOS JUGADOS: 23\nGOLES: 5\nASISTENCIAS: 9\nSPRINTS POR PARTIDO: innumerables\n\nFRASES CÉLEBRES: "dámela al pie" "voy, voy, voy" "uh, casi"\n\nRol del equipo: pulmón derecho, sube y baja todo el partido sin quejarse.`
+  },
+  {
+    numero: "11", nombre: "Nicolas Saraniti", apodo: '"AGENTE"',
+    posicion: "Carrilero Izquierdo", altura: "1.75 m", peso: "71 kg",
+    foto: "HDB/Nico.jpg",
+    desc: `El Agente hace la de espía: aparece donde no lo esperás y resuelve. Banda izquierda, zurda natural y cabeza fría para definir en momentos calientes.\n\nPARTIDOS JUGADOS: 21\nGOLES: 7\nASISTENCIAS: 6\nMISIONES SECRETAS: clasificado\n\nFRASES CÉLEBRES: "yo me escapo por acá" "tranqui que la meto" "me sale la derecha también"\n\nRol del equipo: carrilero zurdo que da equilibrio y aparece en el área rival cuando hace falta.`
+  },
+  {
+    numero: "27", nombre: "Isidoro Gutiérrez", apodo: '"DISCOTECA"',
+    posicion: "Carrilero", altura: "1.78 m", peso: "74 kg",
+    foto: "HDB/Isi.jpg",
+    desc: `El alma de la fiesta dentro y fuera de la cancha. Discoteca corre las bandas como si estuviera bailando, y cuando encara con confianza no hay lateral que lo pare.\n\nPARTIDOS JUGADOS: 22\nGOLES: 4\nASISTENCIAS: 7\nBOLICHES RECORRIDOS POST PARTIDO: muchos\n\nFRASES CÉLEBRES: "después arreglamos dónde vamos" "tirame que doblo" "una más y nos vamos"\n\nRol del equipo: carrilero incansable, mentor del tercer tiempo y motor anímico del grupo.`
+  },
+  {
+    numero: "7", nombre: "Valentin Cuesta", apodo: '"EL NEGRO"',
+    posicion: "Delantero", altura: "1.80 m", peso: "76 kg",
+    foto: "HDB/Valu.jpg",
+    desc: `Delantero moderno, va al choque y no le escapa a ninguna dividida. El Negro define con las dos, entiende el juego de espaldas y hace correr a los centrales toda la tarde.\n\nPARTIDOS JUGADOS: 24\nGOLES: 19 (goleador del equipo)\nASISTENCIAS: 5\nDOBLETE: 4 partidos\n\nFRASES CÉLEBRES: "tirame la pelota arriba" "yo voy solo" "un tiquitín más rápido"\n\nRol del equipo: el 9 que todo equipo quiere tener, referencia en ataque y garantía de gol.`
+  },
+  {
+    numero: "9", nombre: "Juan Gorchs", apodo: '"MEXICANO"',
+    posicion: "Delantero", altura: "1.77 m", peso: "73 kg",
+    foto: null,
+    desc: `El Mexicano pica al espacio como nadie. Delantero de área, cabezazo limpio y siempre listo para aparecer en el segundo palo. Compañero de ataque ideal de El Negro.\n\nPARTIDOS JUGADOS: 20\nGOLES: 13\nASISTENCIAS: 4\nHAT-TRICKS: 2\n\nFRASES CÉLEBRES: "estoy solo" "centralo que voy al primer palo" "¿la vieron?"\n\nRol del equipo: oportunista puro, de esos que siempre están donde la pelota termina cayendo.`
+  }
+];
+
+const FOTO_DEFAULT = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%230a2540'/><circle cx='100' cy='80' r='35' fill='%23ffd700' opacity='0.7'/><path d='M40 180 Q100 120 160 180 Z' fill='%23ffd700' opacity='0.7'/><text x='100' y='195' text-anchor='middle' fill='%23ffd700' font-family='Oswald' font-size='14' letter-spacing='2'>SIN FOTO</text></svg>";
+
+const grid = document.getElementById('plantelGrid');
+jugadores.forEach((j, i) => {
+  const card = document.createElement('div');
+  card.className = 'jugador';
+  card.innerHTML = `
+    <div class="jugador-foto"><img src="${j.foto || FOTO_DEFAULT}" alt="${j.nombre}" /></div>
+    <div class="jugador-info">
+      <div class="jugador-numero">${j.numero}</div>
+      <h3>${j.apodo.replace(/"/g,'')}</h3>
+      <p class="jugador-posicion">${j.posicion}</p>
+    </div>
+  `;
+  card.addEventListener('click', () => abrirModal(i));
+  grid.appendChild(card);
+});
+
+const modal = document.getElementById('modal');
+function abrirModal(i) {
+  const j = jugadores[i];
+  document.getElementById('modalFoto').src = j.foto || FOTO_DEFAULT;
+  document.getElementById('modalNumero').textContent = '# ' + j.numero;
+  document.getElementById('modalNombre').textContent = j.nombre;
+  document.getElementById('modalApodo').textContent = j.apodo;
+  document.getElementById('modalPosicion').textContent = j.posicion;
+  document.getElementById('modalAltura').textContent = j.altura;
+  document.getElementById('modalPeso').textContent = j.peso;
+  document.getElementById('modalDorsal').textContent = j.numero;
+  document.getElementById('modalDesc').textContent = j.desc;
+  modal.classList.add('activo');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarModal() {
+  modal.classList.remove('activo');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalCerrar').addEventListener('click', cerrarModal);
+modal.addEventListener('click', e => { if (e.target === modal) cerrarModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
+
+// ─── REPRODUCTOR SPOTIFY ───
+const panel = document.getElementById('spotifyPanel');
+document.getElementById('playerBtn').addEventListener('click', () => panel.classList.toggle('abierto'));
+document.getElementById('spotifyCerrar').addEventListener('click', () => panel.classList.remove('abierto'));
+</script>
+
+</body>
+</html>
